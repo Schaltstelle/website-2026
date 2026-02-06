@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum - Schaltstelle</title>
+    <meta name="description" content="Impressum der schaltstelle gmbh - IT-Experten aus Bern für Projektunterstützung & digitale Transformation.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/services/logo.png" alt="Schaltstelle Logo">
+            </a>
+            <nav class="nav">
+                <a href="index.html#schaltstelle">Die Schaltstelle</a>
+                <a href="index.html#services">Unser Angebot</a>
+                <a href="index.html#members">Unsere Expert:innen</a>
+                <a href="index.html#kunden">Unsere Kunden</a>
+                <a href="index.html#kontakt">Kontakt</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menü">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <a href="index.html#schaltstelle">Die Schaltstelle</a>
+        <a href="index.html#services">Unser Angebot</a>
+        <a href="index.html#members">Unsere Expert:innen</a>
+        <a href="index.html#kunden">Unsere Kunden</a>
+        <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+
+    <!-- Content -->
+    <section class="page-content">
+        <div class="container">
+            <h1>Impressum</h1>
+            
+            <p><strong>schaltstelle gmbh</strong></p>
+            <p><a href="https://www.google.com/maps/dir//Breitenrainpl.+40,+3014+Bern,+Switzerland" target="_blank">Breitenrainplatz 40<br>3014 Bern</a></p>
+            
+            <h2>Kontaktinformationen</h2>
+            <p>E-Mail: <a href="mailto:info@schaltstelle.ch">info@schaltstelle.ch</a></p>
+            
+            <h2>Unternehmensstatus</h2>
+            <p>Handelsregister-Nummer: CH-035.4.036.201-4</p>
+            <p>Umsatzsteuer-Identifikationsnummer: UID/MWST. CHE-112.963.443</p>
+            
+            <h2>Verantwortlicher für den Inhalt</h2>
+            <p>schaltstelle gmbh</p>
+            <p>Logo: Fresch Identity</p>
+            <p>Illustrationen: Kaspar Allenbach</p>
+            <p>Webdesign: schaltstelle gmbh</p>
+            
+            <h2>Haftungsausschluss</h2>
+            <p>Die Inhalte dieser Website wurden mit grösstmöglicher Sorgfalt erstellt. Dennoch übernehmen wir keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der bereitgestellten Informationen. Die Nutzung der Website erfolgt auf eigene Verantwortung.</p>
+            
+            <h2>Haftung für externe Links</h2>
+            <p>Diese Website kann Links zu externen Webseiten Dritter enthalten. Wir haben keinen Einfluss auf deren Inhalte und übernehmen daher keine Haftung für externe Inhalte. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Zum Zeitpunkt der Verlinkung wurden die externen Seiten auf mögliche Rechtsverstösse überprüft. Eine permanente Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden derartige Links umgehend entfernt.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/services/logo-white.png" alt="Schaltstelle Logo" class="footer-logo">
+                    <p>© schaltstelle gmbh | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+                </div>
+                <div class="footer-contact">
+                    <h3>Hier findest du uns</h3>
+                    <p><strong>Adresse</strong><br>
+                    <a href="https://www.google.com/maps/dir//Breitenrainpl.+40,+3014+Bern" target="_blank">Breitenrainplatz 40<br>3014 Bern</a></p>
+                    <p><strong>Mail</strong><br>
+                    <a href="mailto:info@schaltstelle.ch">info@schaltstelle.ch</a></p>
+                </div>
+                <div class="footer-nav">
+                    <a href="index.html#schaltstelle">Die Schaltstelle</a>
+                    <a href="index.html#services">Unser Angebot</a>
+                    <a href="index.html#members">Unsere Expert:innen</a>
+                    <a href="index.html#kunden">Unsere Kunden</a>
+                    <a href="index.html#kontakt">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileNav.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
