@@ -627,6 +627,7 @@
         
         let currentIndex = 0;
         let slidesPerView = 2;
+        let autoPlayInterval = null;
         
         function updateSlidesPerView() {
             if (window.innerWidth >= 768) {
@@ -650,11 +651,33 @@
             nextBtn.disabled = currentIndex >= getMaxIndex();
         }
         
+        function nextSlide() {
+            if (currentIndex < getMaxIndex()) {
+                currentIndex++;
+            } else {
+                currentIndex = 0; // Loop back to start
+            }
+            updateCarousel();
+        }
+        
+        function startAutoPlay() {
+            stopAutoPlay();
+            autoPlayInterval = setInterval(nextSlide, 3000);
+        }
+        
+        function stopAutoPlay() {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
+            }
+        }
+        
         prevBtn.addEventListener('click', () => {
             if (currentIndex > 0) {
                 currentIndex--;
                 updateCarousel();
             }
+            startAutoPlay(); // Reset timer after manual navigation
         });
         
         nextBtn.addEventListener('click', () => {
@@ -662,7 +685,12 @@
                 currentIndex++;
                 updateCarousel();
             }
+            startAutoPlay(); // Reset timer after manual navigation
         });
+        
+        // Pause on hover
+        carousel.addEventListener('mouseenter', stopAutoPlay);
+        carousel.addEventListener('mouseleave', startAutoPlay);
         
         window.addEventListener('resize', () => {
             updateSlidesPerView();
@@ -675,6 +703,7 @@
         // Initialize carousel
         updateSlidesPerView();
         updateCarousel();
+        startAutoPlay();
     </script>
 </body>
 </html>
