@@ -94,7 +94,7 @@
         <!-- Service 1 -->
         <div id="icon1" class="service-row">
             <div class="service-video">
-                <video autoplay loop muted playsinline>
+                <video loop muted playsinline>
                     <source src="images/animations/01-projektmanagement.mp4" type="video/mp4">
                 </video>
             </div>
@@ -107,7 +107,7 @@
         <!-- Service 2 -->
         <div id="icon2" class="service-row reverse">
             <div class="service-video">
-                <video autoplay loop muted playsinline>
+                <video loop muted playsinline>
                     <source src="images/animations/02-dev-engineering.mp4" type="video/mp4">
                 </video>
             </div>
@@ -120,7 +120,7 @@
         <!-- Service 3 -->
         <div id="icon3" class="service-row">
             <div class="service-video">
-                <video autoplay loop muted playsinline>
+                <video loop muted playsinline>
                     <source src="images/animations/03-software-datenarchitektur.mp4" type="video/mp4">
                 </video>
             </div>
@@ -133,7 +133,7 @@
         <!-- Service 4 -->
         <div id="icon4" class="service-row reverse">
             <div class="service-video">
-                <video autoplay loop muted playsinline>
+                <video loop muted playsinline>
                     <source src="images/animations/04-agile.mp4" type="video/mp4">
                 </video>
             </div>
@@ -146,7 +146,7 @@
         <!-- Service 5 -->
         <div id="icon5" class="service-row">
             <div class="service-video">
-                <video autoplay loop muted playsinline>
+                <video loop muted playsinline>
                     <source src="images/animations/05-workshop-training.mp4" type="video/mp4">
                 </video>
             </div>
@@ -704,6 +704,34 @@
         updateSlidesPerView();
         updateCarousel();
         startAutoPlay();
+
+        // Play videos only when fully in viewport
+        const videos = document.querySelectorAll('.service-video video');
+        
+        function isFullyInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            const buffer = 80; // Account for whitespace in videos
+            return (
+                rect.top >= -buffer &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + buffer &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+        
+        function checkVideos() {
+            videos.forEach(video => {
+                if (isFullyInViewport(video)) {
+                    if (video.paused) video.play();
+                } else {
+                    if (!video.paused) video.pause();
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkVideos, { passive: true });
+        window.addEventListener('resize', checkVideos, { passive: true });
+        checkVideos(); // Initial check
     </script>
 </body>
 </html>
