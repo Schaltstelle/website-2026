@@ -463,23 +463,35 @@
             <h2>Vertrauenspartner für digitale Transformation</h2>
             <p class="section-subtitle">Vom Startup über den Verband bis zum Grosskonzern – wir sind stolz, dass wir für diese führenden Unternehmen arbeiten durften und dürfen.</p>
             
-            <div class="clients-grid">
-                <div class="client-logo"><img src="images/clients/twint-1024x331.png" alt="Twint"></div>
-                <div class="client-logo"><img src="images/clients/postfinance-1024x296.png" alt="PostFinance"></div>
-                <div class="client-logo"><img src="images/clients/mobiliar-1024x219.png" alt="Die Mobiliar"></div>
-                <div class="client-logo"><img src="images/clients/bkw.svg" alt="BKW"></div>
-                <div class="client-logo"><img src="images/clients/sbb-logo-1024x576.png" alt="SBB"></div>
-                <div class="client-logo"><img src="images/clients/visana-logo-1024x319.png" alt="Visana"></div>
-                <div class="client-logo"><img src="images/clients/schweizerische-eigenossenschaft.svg" alt="Schweizerische Eidgenossenschaft"></div>
-                <div class="client-logo"><img src="images/clients/berghilfe-1024x319.png" alt="Schweizer Berghilfe"></div>
-                <div class="client-logo"><img src="images/clients/fhnw.svg" alt="FHNW"></div>
-                <div class="client-logo"><img src="images/clients/sac.svg" alt="SAC"></div>
-                <div class="client-logo"><img src="images/clients/transgourmet.svg" alt="TransGourmet"></div>
-                <div class="client-logo"><img src="images/clients/frasers-group-1024x290.png" alt="Frasers Group"></div>
-                <div class="client-logo"><img src="images/clients/biketec-logo.svg" alt="Biketec"></div>
-                <div class="client-logo"><img src="images/clients/hls.png" alt="Historisches Lexikon der Schweiz"></div>
-                <div class="client-logo"><img src="images/clients/apiable.svg" alt="Apiable"></div>
-                <div class="client-logo"><img src="images/clients/pi-planning-1024x177.png" alt="PI Planning"></div>
+            <div class="carousel">
+                <button class="carousel-btn carousel-btn-prev" aria-label="Vorherige">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </button>
+                
+                <div class="carousel-track-container">
+                    <div class="carousel-track">
+                        <div class="client-logo"><img src="images/clients/twint.png" alt="Twint"></div>
+                        <div class="client-logo"><img src="images/clients/postfinance.png" alt="PostFinance"></div>
+                        <div class="client-logo"><img src="images/clients/mobiliar.png" alt="Die Mobiliar"></div>
+                        <div class="client-logo"><img src="images/clients/bkw.svg" alt="BKW"></div>
+                        <div class="client-logo"><img src="images/clients/sbb-logo.png" alt="SBB"></div>
+                        <div class="client-logo"><img src="images/clients/visana-logo.png" alt="Visana"></div>
+                        <div class="client-logo"><img src="images/clients/schweizerische-eigenossenschaft.svg" alt="Schweizerische Eidgenossenschaft"></div>
+                        <div class="client-logo"><img src="images/clients/berghilfe.png" alt="Schweizer Berghilfe"></div>
+                        <div class="client-logo"><img src="images/clients/fhnw.svg" alt="FHNW"></div>
+                        <div class="client-logo"><img src="images/clients/sac.svg" alt="SAC"></div>
+                        <div class="client-logo"><img src="images/clients/transgourmet.svg" alt="TransGourmet"></div>
+                        <div class="client-logo"><img src="images/clients/frasers-group.png" alt="Frasers Group"></div>
+                        <div class="client-logo"><img src="images/clients/biketec-logo.svg" alt="Biketec"></div>
+                        <div class="client-logo"><img src="images/clients/hls.png" alt="Historisches Lexikon der Schweiz"></div>
+                        <div class="client-logo"><img src="images/clients/apiable.svg" alt="Apiable"></div>
+                        <div class="client-logo"><img src="images/clients/pi-planning.png" alt="PI Planning"></div>
+                    </div>
+                </div>
+                
+                <button class="carousel-btn carousel-btn-next" aria-label="Nächste">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+                </button>
             </div>
         </div>
     </section>
@@ -605,6 +617,64 @@
                 header.classList.remove('scrolled');
             }
         });
+
+        // Carousel functionality
+        const carousel = document.querySelector('.carousel');
+        const track = carousel.querySelector('.carousel-track');
+        const slides = carousel.querySelectorAll('.client-logo');
+        const prevBtn = carousel.querySelector('.carousel-btn-prev');
+        const nextBtn = carousel.querySelector('.carousel-btn-next');
+        
+        let currentIndex = 0;
+        let slidesPerView = 2;
+        
+        function updateSlidesPerView() {
+            if (window.innerWidth >= 768) {
+                slidesPerView = 4;
+            } else if (window.innerWidth >= 576) {
+                slidesPerView = 3;
+            } else {
+                slidesPerView = 2;
+            }
+        }
+        
+        function getMaxIndex() {
+            return Math.max(0, slides.length - slidesPerView);
+        }
+        
+        function updateCarousel() {
+            const slideWidth = 100 / slidesPerView;
+            track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+            
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex >= getMaxIndex();
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < getMaxIndex()) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+        
+        window.addEventListener('resize', () => {
+            updateSlidesPerView();
+            if (currentIndex > getMaxIndex()) {
+                currentIndex = getMaxIndex();
+            }
+            updateCarousel();
+        });
+        
+        // Initialize carousel
+        updateSlidesPerView();
+        updateCarousel();
     </script>
 </body>
 </html>
