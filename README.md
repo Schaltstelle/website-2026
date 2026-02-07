@@ -40,6 +40,11 @@ Example prompts:
 - Client logos: PNG or SVG, keep file names clean
 - Animation videos: 600×600px MP4, H.264, no audio
 
+## Before going live
+
+- [ ] Remove `<meta name="robots" content="noindex, nofollow">` from all HTML pages
+- [ ] Update `robots.txt` to allow indexing (`Allow: /`)
+
 ## Compressing assets
 
 **Resize a member photo (macOS built-in):**
