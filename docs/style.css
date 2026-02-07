@@ -189,7 +189,7 @@ p {
     width: 25px;
     height: 2px;
     background-color: var(--color-primary);
-    transition: var(--transition);
+    transition: all 0.15s ease;
 }
 
 .mobile-menu-btn.active span:nth-child(1) {
