@@ -448,8 +448,11 @@ p {
 
 .service-video video {
     width: 100%;
-    max-width: 500px;
+    height: auto;
+    max-width: 375px;
     border-radius: 12px;
+    margin: 0 auto;
+    display: block;
 }
 
 .service-content {
