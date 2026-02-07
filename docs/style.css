@@ -544,9 +544,11 @@ p {
     }
 }
 
-.team-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+@media (min-width: 768px) {
+    .team-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
 }
 
 .team-image {
@@ -706,10 +708,16 @@ p {
     background: var(--color-white);
     color: var(--color-primary);
     cursor: pointer;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     transition: var(--transition);
+}
+
+@media (min-width: 768px) {
+    .carousel-btn {
+        display: flex;
+    }
 }
 
 .carousel-btn:hover {
