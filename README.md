@@ -5,7 +5,7 @@ Static website for [schaltstelle.ch](https://schaltstelle.ch).
 ## Structure
 
 ```
-web/                    # Served by GitHub Pages
+docs/                   # Served by GitHub Pages
   index.html            # Main page
   impressum.html        # Legal notice
   datenschutz.html      # Privacy policy
@@ -25,13 +25,13 @@ web/                    # Served by GitHub Pages
 Example prompts:
 
 **Add a new team member:**
-> Add a new member "Anna Müller", role "Software Engineer", with description "...". I put her photo in web/images/members/.
+> Add a new member "Anna Müller", role "Software Engineer", with description "...". I put her photo in docs/images/members/.
 
 **Add a new client logo:**
-> Add [Company] to the client carousel. I put their logo in web/images/clients/.
+> Add [Company] to the client carousel. I put their logo in docs/images/clients/.
 
 **Add a community partner:**
-> Add [Organization] (https://example.ch) to the community section. I put their logo in web/images/community/.
+> Add [Organization] (https://example.ch) to the community section. I put their logo in docs/images/community/.
 
 **Update content:**
 > Change the hero text to "..."
@@ -51,12 +51,12 @@ Example prompts:
 
 **Resize a member photo (macOS built-in):**
 ```bash
-sips -Z 400 web/images/members/new-photo.jpg
+sips -Z 400 docs/images/members/new-photo.jpg
 ```
 
 **Re-encode a JPEG with quality 80%:**
 ```bash
-sips -s format jpeg -s formatOptions 80 web/images/members/photo.jpg --out web/images/members/photo.jpg
+sips -s format jpeg -s formatOptions 80 docs/images/members/photo.jpg --out docs/images/members/photo.jpg
 ```
 
 **Optimize a video (requires `brew install ffmpeg`):**
