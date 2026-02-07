@@ -1091,6 +1091,45 @@ p {
 }
 
 /* ==========================================================================
+   Scroll to Top Button
+   ========================================================================== */
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-primary);
+    color: var(--color-white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, background 0.3s ease;
+    z-index: 99;
+}
+
+.scroll-to-top.visible {
+    opacity: 0.7;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    opacity: 1;
+    background: var(--color-accent);
+}
+
+.scroll-to-top svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ==========================================================================
    Print Styles
    ========================================================================== */
 

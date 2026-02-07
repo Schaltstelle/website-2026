@@ -589,6 +589,11 @@
         </div>
     </footer>
 
+    <!-- Scroll to Top -->
+    <button class="scroll-to-top" aria-label="Nach oben scrollen">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+    </button>
+
     <script>
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -717,6 +722,21 @@
         updateSlidesPerView();
         updateCarousel();
         startAutoPlay();
+
+        // Scroll to top button
+        const scrollTopBtn = document.querySelector('.scroll-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        }, { passive: true });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
         // Scroll hint for service icons
         const scrollHint = document.querySelector('.icons-scroll-hint');
