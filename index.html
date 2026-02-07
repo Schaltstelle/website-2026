@@ -718,6 +718,25 @@
             updateCarousel();
         });
         
+        // Shuffle children of a container randomly
+        function shuffleChildren(container) {
+            const children = Array.from(container.children);
+            for (let i = children.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                container.appendChild(children[j]);
+                children.splice(j, 1, children[i]);
+            }
+        }
+        
+        // Randomize members, client logos, and community logos
+        const teamGrid = document.querySelector('.team-grid');
+        if (teamGrid) shuffleChildren(teamGrid);
+        
+        const communityGrid = document.querySelector('.community-grid');
+        if (communityGrid) shuffleChildren(communityGrid);
+        
+        shuffleChildren(track); // carousel track (client logos)
+        
         // Initialize carousel
         updateSlidesPerView();
         updateCarousel();
