@@ -165,8 +165,7 @@ p {
 }
 
 .nav a {
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 1.05rem;
     color: var(--color-primary);
 }
 
