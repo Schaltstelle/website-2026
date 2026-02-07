@@ -44,6 +44,20 @@ Example prompts:
 - Client logos: PNG or SVG, keep file names clean
 - Animation videos: 600×600px MP4, H.264, no audio
 
+## High contrast mode
+
+The site includes a contrast-optimized viewing mode for better readability. It increases text contrast, removes opacity reductions, and disables the grayscale filter on client logos.
+
+**How it activates:**
+
+- **Automatically** for users whose OS or browser has a high-contrast preference enabled (`prefers-contrast: high` media query).
+- **Manually for testing:** Open the browser DevTools, select the `<html>` element, and add the class `high-contrast`. All the same overrides apply.
+
+**How it works:**
+
+- All contrast overrides live in the "High Contrast Mode" section at the end of `style.css`.
+- Two parallel rule sets exist: a `@media (prefers-contrast: high)` block for automatic activation, and `html.high-contrast` selectors for manual testing. Both must stay in sync.
+
 ## Before going live
 
 - [ ] Remove `<meta name="robots" content="noindex, nofollow">` from all HTML pages

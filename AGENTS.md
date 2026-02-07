@@ -15,6 +15,7 @@ The site is served from `docs/` via GitHub Pages.
 - **Member photos** are named `<firstname>-<lastname>.jpg`, all lowercase.
 - **Client and community logos** should have clean filenames (no dimensions, no URL-encoded characters).
 - **Members, clients, and community logos are randomly shuffled** on page load via JavaScript. Order in the HTML doesn't matter.
+- **High contrast mode must stay up-to-date.** When adding new sections or changing colors/opacities, check whether the high-contrast overrides in `style.css` (section "High Contrast Mode") need updating. The `@media (prefers-contrast: high)` block and the `html.high-contrast` selectors must stay in sync with each other.
 
 ## File layout
 

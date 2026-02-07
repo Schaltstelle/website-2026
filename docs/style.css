@@ -1137,6 +1137,78 @@ p {
 }
 
 /* ==========================================================================
+   High Contrast Mode
+   Activated automatically via OS/browser preference (prefers-contrast: high)
+   or manually by adding class="high-contrast" to <html> for testing.
+   ========================================================================== */
+
+@media (prefers-contrast: high) {
+    :root {
+        --color-gray: #333333;
+    }
+
+    .hero-subtitle {
+        color: var(--color-primary);
+    }
+
+    .about-card p {
+        color: #ffffff;
+    }
+
+    .charta-text p,
+    .charta-label {
+        opacity: 1;
+    }
+
+    .footer-brand p,
+    .footer-contact p,
+    .footer-nav a {
+        opacity: 1;
+    }
+
+    .contact p {
+        opacity: 1;
+    }
+
+    .carousel .client-logo {
+        filter: none;
+        opacity: 1;
+    }
+}
+
+html.high-contrast {
+    --color-gray: #333333;
+}
+
+html.high-contrast .hero-subtitle {
+    color: var(--color-primary);
+}
+
+html.high-contrast .about-card p {
+    color: #ffffff;
+}
+
+html.high-contrast .charta-text p,
+html.high-contrast .charta-label {
+    opacity: 1;
+}
+
+html.high-contrast .footer-brand p,
+html.high-contrast .footer-contact p,
+html.high-contrast .footer-nav a {
+    opacity: 1;
+}
+
+html.high-contrast .contact p {
+    opacity: 1;
+}
+
+html.high-contrast .carousel .client-logo {
+    filter: none;
+    opacity: 1;
+}
+
+/* ==========================================================================
    Print Styles
    ========================================================================== */
 
