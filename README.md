@@ -2,6 +2,8 @@
 
 Static website for [schaltstelle.ch](https://schaltstelle.ch).
 
+The site lives in `docs/` because GitHub Pages only supports serving from `/` (root) or `/docs`. This keeps repo-level files like `AGENDTS.md` and `README.md` out of the public URL.
+
 ## Structure
 
 ```
