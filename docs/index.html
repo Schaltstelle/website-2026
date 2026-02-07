@@ -597,6 +597,12 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
     </button>
 
+    <!-- Member Modal (mobile) -->
+    <div id="member-modal" class="member-modal-overlay" role="dialog" aria-modal="true" aria-label="Mitglied Details">
+        <button class="member-modal-close" aria-label="Schliessen">&times;</button>
+        <div class="member-modal-body"></div>
+    </div>
+
     <script>
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -782,6 +788,59 @@
                 }
             }, { passive: true });
         }
+
+        // Member modal (mobile)
+        (function() {
+            var overlay = document.getElementById('member-modal');
+            if (!overlay) return;
+            var closeBtn = overlay.querySelector('.member-modal-close');
+            var body = overlay.querySelector('.member-modal-body');
+            var mobileBreakpoint = 768;
+
+            function isMobile() {
+                return window.innerWidth < mobileBreakpoint;
+            }
+
+            function openModal(card) {
+                var img = card.querySelector('.team-image img');
+                var name = card.querySelector('h3').textContent;
+                var role = card.querySelector('.role').textContent;
+                var desc = card.querySelector('p') ? card.querySelector('p').textContent : '';
+                var socialHTML = card.querySelector('.social-links') ? card.querySelector('.social-links').innerHTML : '';
+
+                body.innerHTML =
+                    '<div class="team-image"><img src="' + img.src + '" alt="' + img.alt + '" width="400" height="400"></div>' +
+                    '<h3>' + name + '</h3>' +
+                    '<span class="role">' + role + '</span>' +
+                    '<p class="member-modal-desc">' + desc + '</p>' +
+                    '<div class="social-links">' + socialHTML + '</div>';
+
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            closeBtn.addEventListener('click', closeModal);
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) closeModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
+            });
+
+            document.querySelectorAll('.team-card').forEach(function(card) {
+                card.addEventListener('click', function(e) {
+                    if (!isMobile()) return;
+                    // Don't intercept clicks on social links
+                    if (e.target.closest('.social-links')) return;
+                    openModal(card);
+                });
+            });
+        })();
 
         // Play videos only when fully in viewport
         const videos = document.querySelectorAll('.service-video video');
