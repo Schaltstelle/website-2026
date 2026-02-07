@@ -5,17 +5,19 @@ Static website for [schaltstelle.ch](https://schaltstelle.ch).
 ## Structure
 
 ```
-index.html          # Main page
-impressum.html      # Legal notice
-datenschutz.html    # Privacy policy
-style.css           # All styles
-images/
-  logos/            # Company logos, favicons
-  members/          # Team member photos (400x400 jpg)
-  clients/          # Client logos
-  community/        # Community partner logos
-  services/         # Service icons
-  animations/       # Service animation videos (600x600 mp4)
+web/                    # Served by GitHub Pages
+  index.html            # Main page
+  impressum.html        # Legal notice
+  datenschutz.html      # Privacy policy
+  style.css             # All styles
+  fonts/                # Self-hosted Open Sans
+  images/
+    logos/              # Company logos, favicons
+    members/            # Team member photos (400x400 jpg)
+    clients/            # Client logos
+    community/          # Community partner logos
+    services/           # Service icons
+    animations/         # Service animation videos (600x600 mp4)
 ```
 
 ## Editing with AI
@@ -23,13 +25,13 @@ images/
 Example prompts:
 
 **Add a new team member:**
-> Add a new member "Anna Müller", role "Software Engineer", with description "...". I put her photo in images/members/.
+> Add a new member "Anna Müller", role "Software Engineer", with description "...". I put her photo in web/images/members/.
 
 **Add a new client logo:**
-> Add [Company] to the client carousel. I put their logo in images/clients/.
+> Add [Company] to the client carousel. I put their logo in web/images/clients/.
 
 **Add a community partner:**
-> Add [Organization] (https://example.ch) to the community section. I put their logo in images/community/.
+> Add [Organization] (https://example.ch) to the community section. I put their logo in web/images/community/.
 
 **Update content:**
 > Change the hero text to "..."
@@ -49,12 +51,12 @@ Example prompts:
 
 **Resize a member photo (macOS built-in):**
 ```bash
-sips -Z 400 images/members/new-photo.jpg
+sips -Z 400 web/images/members/new-photo.jpg
 ```
 
 **Re-encode a JPEG with quality 80%:**
 ```bash
-sips -s format jpeg -s formatOptions 80 images/members/photo.jpg --out images/members/photo.jpg
+sips -s format jpeg -s formatOptions 80 web/images/members/photo.jpg --out web/images/members/photo.jpg
 ```
 
 **Optimize a video (requires `brew install ffmpeg`):**
