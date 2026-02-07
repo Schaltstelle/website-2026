@@ -59,6 +59,9 @@
     <section id="schaltstelle" class="services-icons">
         <div class="container">
             <div class="icons-grid">
+                <div class="icons-scroll-hint">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+                </div>
                 <a href="#icon1" class="icon-item">
                     <img src="images/services/01-projektmanagement-w-300x300.png" alt="Projektmanagement">
                     <span>Zielorientiertes Projektmanagement</span>
@@ -709,6 +712,29 @@
         updateSlidesPerView();
         updateCarousel();
         startAutoPlay();
+
+        // Scroll hint for service icons
+        const scrollHint = document.querySelector('.icons-scroll-hint');
+        const iconsGrid = document.querySelector('.icons-grid');
+        
+        if (scrollHint && iconsGrid) {
+            const hintObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        scrollHint.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            hintObserver.observe(iconsGrid);
+            
+            iconsGrid.addEventListener('scroll', () => {
+                if (iconsGrid.scrollLeft > 20) {
+                    scrollHint.classList.remove('visible');
+                    hintObserver.disconnect();
+                }
+            }, { passive: true });
+        }
 
         // Play videos only when fully in viewport
         const videos = document.querySelectorAll('.service-video video');

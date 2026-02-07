@@ -263,9 +263,56 @@ p {
 }
 
 .icons-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.5rem;
+    position: relative;
+}
+
+.icons-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.icons-scroll-hint {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.icons-scroll-hint.visible {
+    opacity: 1;
+}
+
+.icons-scroll-hint.visible svg {
+    animation: slideRight 1.5s ease-in-out infinite;
+}
+
+.icons-scroll-hint svg {
+    width: 32px;
+    height: 32px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes slideRight {
+    0% { transform: translateX(0); opacity: 0.6; }
+    50% { transform: translateX(8px); opacity: 1; }
+    100% { transform: translateX(16px); opacity: 0; }
+}
+
+@media (min-width: 768px) {
+    .icons-scroll-hint {
+        display: none;
+    }
 }
 
 .icon-item {
@@ -277,6 +324,8 @@ p {
     padding: 1rem;
     border-radius: 12px;
     transition: var(--transition);
+    flex: 0 0 130px;
+    scroll-snap-align: start;
 }
 
 .icon-item:hover {
@@ -297,18 +346,19 @@ p {
 
 @media (min-width: 768px) {
     .icons-grid {
-        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+        overflow-x: visible;
+        scroll-snap-type: none;
+        position: static;
+    }
+
+    .icon-item {
+        flex: 0 0 auto;
     }
     
     .icon-item img {
         width: 100px;
         height: 100px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .icons-grid {
-        grid-template-columns: repeat(5, 1fr);
     }
 }
 
