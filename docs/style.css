@@ -945,15 +945,15 @@ p {
 
 .community-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
     align-items: center;
     justify-items: center;
     margin-top: 3rem;
 }
 
 .community-logo {
-    padding: 1.5rem;
+    padding: 0.5rem;
     transition: var(--transition);
 }
 
@@ -962,13 +962,21 @@ p {
 }
 
 .community-logo img {
-    max-height: 80px;
+    max-height: 40px;
     width: auto;
 }
 
 @media (min-width: 768px) {
     .community-grid {
-        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+
+    .community-logo {
+        padding: 1.5rem;
+    }
+
+    .community-logo img {
+        max-height: 80px;
     }
 }
 
