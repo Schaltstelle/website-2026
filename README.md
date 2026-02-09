@@ -58,11 +58,6 @@ The site includes a contrast-optimized viewing mode for better readability. It i
 - All contrast overrides live in the "High Contrast Mode" section at the end of `style.css`.
 - Two parallel rule sets exist: a `@media (prefers-contrast: high)` block for automatic activation, and `html.high-contrast` selectors for manual testing. Both must stay in sync.
 
-## Before going live
-
-- [ ] Remove `<meta name="robots" content="noindex, nofollow">` from all HTML pages
-- [ ] Update `robots.txt` to allow indexing (`Allow: /`)
-
 ## Compressing assets
 
 **Resize a member photo (macOS built-in):**
