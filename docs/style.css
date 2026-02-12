@@ -657,7 +657,7 @@ p {
    ========================================================================== */
 
 .member-modal-overlay {
-    display: none;
+    display: flex;
     position: fixed;
     top: 70px;
     left: 0;
@@ -666,10 +666,17 @@ p {
     z-index: 999;
     background: var(--color-white);
     flex-direction: column;
+    transform: translateY(100%);
+    visibility: hidden;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0s linear 0.3s;
 }
 
 .member-modal-overlay.active {
-    display: flex;
+    transform: translateY(0);
+    visibility: visible;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0s linear 0s;
 }
 
 .member-modal-close {
